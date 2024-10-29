@@ -51,9 +51,6 @@ The Coaching Conundrum application is a web-based platform for scheduling and ma
    - **Coach Account**
      - Username: `coach1`
      - Password: `password123`
-   - **Admin Account**
-     - Username: `kikyo`
-     - Password: `testpassword`
 
 2. **Dashboard**: After logging in, you will be redirected to the appropriate dashboard based on your user role (student or coach).
 
@@ -80,8 +77,10 @@ To make sure all CSS, JavaScript, and images load properly, run the following co
 python manage.py collectstatic
 ```
 This will gather all static assets into a single directory, which can then be accessed by the application.
-
 Feel free to use these accounts to explore the different features of the application.
+
+## Testing and Incognito Mode
+For testing purposes, you may want to use multiple accounts simultaneously. To do this effectively, consider opening a new browser window in incognito/private mode. This allows you to log in with a different user account without logging out of your current session.
 
 ## Troubleshooting
 - **Server Not Starting**: Ensure that the virtual environment is activated and Django is installed.

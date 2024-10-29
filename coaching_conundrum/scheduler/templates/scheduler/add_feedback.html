@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <h1>Coaching Scheduling System</h1>
+    <a href="{% url 'home' %}">Home</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</header>    
+<head>
+    <title>Add Feedback</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>Feedback for Call with {{ slot.student.username }}</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Feedback</button>
+    </form>
+</body>
+<footer>
+    <p>&copy; 2024 Coaching Scheduling System</p>
+</footer>
+</html>

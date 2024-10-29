@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <h1>Coaching Scheduling System</h1>
+        <a href="{% url 'home' %}">Home</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </header>    
+<head>
+    <title>Your Booked Slots</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>Your Booked Slots</h1>
+
+    <ul>
+        {% for slot in slots %}
+            <li>{{ slot.coach.username }}: {{ slot.start_time }} - {{ slot.end_time }} - Coach Phone: {{ slot.coach.coachprofile.phone_number }}</li>
+        {% empty %}
+            <li>You haven't booked any slots yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+<footer>
+    <p>&copy; 2024 Coaching Scheduling System</p>
+</footer>
+</html>

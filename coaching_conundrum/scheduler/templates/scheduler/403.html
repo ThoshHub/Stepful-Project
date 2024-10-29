@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <h1>Coaching Scheduling System</h1>
+    <a href="{% url 'home' %}">Home</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</header>
+<head>
+    <title>Permission Denied</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>403 - Permission Denied</h1>
+    <p>You do not have permission to view this page.</p>
+    <a href="{% url 'home' %}">Return to Home</a>
+</body>
+<footer>
+    <p>&copy; 2024 Coaching Scheduling System</p>
+</footer>
+</html>

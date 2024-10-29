@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <header>
+    <h1>Coaching Scheduling System</h1>
+    <a href="{% url 'home' %}">Home</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</header>    
+<head>
+    <title>Add Availability Slot</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script>
+        function showPopup(message) {
+            alert(message);  // Basic alert popup
+        }
+    </script>
+</head>
+<body>
+    <h1>Add Availability Slot</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <!-- Display non-field errors -->
+        {% if form.non_field_errors %}
+            <script>
+                showPopup("{{ form.non_field_errors.as_text }}");
+            </script>
+        {% endif %}
+
+        <button type="submit">Add Slot</button>
+    </form>
+</body>
+<footer>
+    <p>&copy; 2024 Coaching Scheduling System</p>
+</footer>
+</html>

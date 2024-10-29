@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<header>
+    <h1>Coaching Scheduling System</h1>
+    <a href="{% url 'home' %}">Home</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</header>    
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>Welcome to the Coaching Scheduling System</h1>
+
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }}!</p>
+        <p><a href="{% url 'logout' %}">Logout</a></p>
+
+        {% if user.coachprofile %}
+            <!-- Show coach-specific links -->
+            <p><a href="{% url 'coach_slots' %}">View Coach Slots</a></p>
+            <p><a href="{% url 'past_calls' %}">View Past Calls</a></p>
+        {% elif user.studentprofile %}
+            <!-- Show student-specific links -->
+            <p><a href="{% url 'available_slots' %}">View Available Slots</a></p>
+            <p><a href="{% url 'booked_slots' %}">View Your Booked Slots</a></p>
+        {% endif %}
+
+    {% else %}
+        <!-- Show login link if the user is not logged in -->
+        <p><a href="{% url 'login' %}">Login</a></p>
+    {% endif %}
+    
+</body>
+<footer>
+    <p>&copy; 2024 Coaching Scheduling System</p>
+</footer>
+</html>
